@@ -10,6 +10,9 @@ SUNLIGHT_ID = 2
 SUNFLOWER_ID = 3
 PEASHOOTER_ID = 4
 
+BBALL_ID = "basketball"
+KUN_ID = "kun"
+
 ZOMBIE_CD = 8
 
 

@@ -76,7 +76,8 @@ class Game:
 
     def add_sunflower(self, x, y):
         pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
-        sf = sunflower.SunFlower(SUNFLOWER_ID, pos)
+        # sf = sunflower.SunFlower(SUNFLOWER_ID, pos)
+        sf = sunflower.SunFlower(pos)
         self.plants.append(sf)
 
     def add_peashooter(self, x, y):
@@ -121,5 +122,5 @@ class Game:
         mousePos = pygame.mouse.get_pos()
         self.checkLoot(mousePos)
         if btn == 1: # mouse left-click, plant sunflower
-            # self.checkAddPlant(mousePos, SUNFLOWER_ID)
-            self.checkAddPlant(mousePos, PEASHOOTER_ID)
+            self.checkAddPlant(mousePos, SUNFLOWER_ID)
+            # self.checkAddPlant(mousePos, PEASHOOTER_ID)

@@ -1,6 +1,6 @@
 # flake8: noqa
 import objectbase
-import peabullet
+import items
 import time
 from const import *
 
@@ -47,4 +47,4 @@ class PeaShooter(objectbase.ObjectBase):
     def doSummon(self):
         if self.hasSummon():
             self.hasBullet = False
-            return peabullet.PeaBullet(BULLET_ID, (self.pos[0]+self.size[0], self.pos[1]))
+            return items.PeaBullet((self.pos[0]+self.size[0], self.pos[1]))
