@@ -22,3 +22,9 @@ class Basketball(objectbase.ObjectBase):
     def __init__(self, pos):
         super().__init__(BBALL_ID, pos)
     pass
+
+class Chicken(objectbase.ObjectBase):
+    '''Summoned by ChickenFlower.'''
+    def __init__(self, pos):
+        super().__init__(CHICKEN_ID, pos)
+    pass

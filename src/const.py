@@ -9,9 +9,11 @@ ZOMBIE_ID = 1
 SUNLIGHT_ID = 2
 SUNFLOWER_ID = 3
 PEASHOOTER_ID = 4
+CHICKFLOWER_ID = 5
 
 BBALL_ID = "basketball"
 KUN_ID = "kun"
+CHICKEN_ID = "chicken"
 
 ZOMBIE_CD = 8
 

@@ -55,7 +55,7 @@ data = {
         'PATH': 'pic/plants/SunFlower/SunFlower_%d.png',
         'IMAGE_INDEX_MAX': 17,
         'IMAGE_INDEX_CD': 0.03,
-        'POSITION_CD': 0.05,
+        'POSITION_CD': 100,
         'SIZE': (80, 80),
         'SPEED': (0, 0),
         'PRICE': 30 # costs 30 gold
@@ -67,6 +67,24 @@ data = {
         'POSITION_CD': 0.05,
         'SIZE': (80, 80),
         'SPEED': (0, 0),
-        'PRICE': 20 # costs 20 gold
+        'PRICE': 20  # costs 20 gold
+    },
+    5: { # Chickenflower
+        'PATH': 'pic/chickens/chicken_%d.png',
+        'IMAGE_INDEX_MAX': 3,
+        'IMAGE_INDEX_CD': 0.5,
+        'POSITION_CD': 100,
+        'SIZE': (80, 80),
+        'SPEED': (0, 0),
+        'PRICE': 1000  # costs 30 gold
+    },
+    "chicken": {
+        'PATH': 'pic/other/chick.png',
+        'IMAGE_INDEX_MAX': 0,
+        'IMAGE_INDEX_CD': 0.0,
+        'POSITION_CD': 0.05,
+        'SIZE': (80, 80),
+        'SPEED': (0, 1),
+        'PRICE': 100  # picks chicken earns 100 gold
     }
 }

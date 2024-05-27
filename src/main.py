@@ -8,6 +8,8 @@ import image
 import items
 
 pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.set_volume(20)
 
 DS = pygame.display.set_mode( GAME_SIZE )
 game = Game(DS)

@@ -1,8 +1,10 @@
 # flake8: noqa
 import image
 import sunflower
+import chickenflower
 import peashooter
 import zombiebase
+import musicaudio
 from const import *
 import pygame
 import time
@@ -16,11 +18,12 @@ class Game:
         self.ds = ds
         self.bg = image.Image(path_bg, 0, (0, 0), GAME_SIZE, 0) # background
         self.plants = []
-        self.summons = [] # sunlight
+        self.summons = [] # sunlight / chicken
         self.zombies = []
         self.zombie_generate_time = 0
         self.gold = 10000
         self.__hasPlant()
+        musicaudio.bgm()
 
     def __hasPlant(self):
         # initialize hasPlant to m*n matrix, entry=0 means no plant (can plant)
@@ -53,7 +56,7 @@ class Game:
         self.bg.update()
         for plant in self.plants:
             plant.update()
-            if plant.hasSummon(): # is sunflower
+            if plant.hasSummon(): # is sunflower / chickenflower
                 photon_summon = plant.doSummon()
                 self.summons.append(photon_summon)
         for photon in self.summons:
@@ -65,20 +68,28 @@ class Game:
             self.add_zombie()
 
 
-    def checkLoot(self, mousePos):
+    def clicksunlight(self, mousePos):
         for summon in self.summons:
-            if summon.id == SUNLIGHT_ID: # is sunlight
+            if summon.id == SUNLIGHT_ID or summon.id == CHICKEN_ID: # is sunlight or chick
                 rect = summon.getRect() # location of sunlight
                 if rect.collidepoint(mousePos): # mouse click sunlight
+                    if summon.id == CHICKEN_ID:
+                        musicaudio.ji()
+                    else:
+                        musicaudio.niganma()
                     self.summons.remove(summon)
                     self.gold += summon.getPrice()
                     return
 
     def add_sunflower(self, x, y):
         pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
-        # sf = sunflower.SunFlower(SUNFLOWER_ID, pos)
         sf = sunflower.SunFlower(pos)
         self.plants.append(sf)
+
+    def add_chickflower(self, x, y):
+        pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
+        cf = chickenflower.ChickenFlower(pos)
+        self.plants.append(cf)
 
     def add_peashooter(self, x, y):
         pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
@@ -86,7 +97,7 @@ class Game:
         self.plants.append(ps)
 
     def add_zombie(self):
-        '''Always adds zombie at the right part of screen (x=14 grids).'''
+        '''Adds zombie at a random row at the screen right (x=14 grids).'''
         x = 14
         y = random.randint(0, GRID_COUNT[1]-1)
         pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
@@ -116,11 +127,15 @@ class Game:
             self.add_sunflower(x, y)
         elif plant_id == PEASHOOTER_ID:
             self.add_peashooter(x, y)
+        elif plant_id == CHICKFLOWER_ID:
+            self.add_chickflower(x, y)
 
     def mouseClickHandler(self, btn):
         # handles mouse click
         mousePos = pygame.mouse.get_pos()
-        self.checkLoot(mousePos)
-        if btn == 1: # mouse left-click, plant sunflower
-            self.checkAddPlant(mousePos, SUNFLOWER_ID)
+        self.clicksunlight(mousePos)
+        if btn == 3: # mouse left-click, plant sunflower
+            self.checkAddPlant(mousePos, CHICKFLOWER_ID)
             # self.checkAddPlant(mousePos, PEASHOOTER_ID)
+        elif btn == 1: # mouse right-click
+            self.checkAddPlant(mousePos, SUNFLOWER_ID)
