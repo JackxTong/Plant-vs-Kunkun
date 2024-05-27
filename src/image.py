@@ -1,11 +1,12 @@
 import pygame
 
+
 class Image(pygame.sprite.Sprite):
     def __init__(self, path, pathIndex, pos, size, pathIndexCount):
         self.path = path
         self.pathIndex = pathIndex
-        self.pos = list(pos) # position
-        self.size = size # set self.image to size
+        self.pos = list(pos)  # position
+        self.size = size  # set self.image to size
         self.pathIndexCount = pathIndexCount
         self.updateImage()
 
@@ -18,7 +19,7 @@ class Image(pygame.sprite.Sprite):
     def updateImage(self):
         path = self.path
         if self.pathIndexCount != 0:
-            path = path % self.pathIndex # make sure index in range
+            path = path % self.pathIndex  # path = "image_%(pathIndex).png", e.g.image_1.png
         self.image = pygame.image.load(path)
         if self.size:
             self.image = pygame.transform.scale(self.image, self.size)

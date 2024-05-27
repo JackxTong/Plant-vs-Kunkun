@@ -2,6 +2,7 @@ import image
 import time
 import object_dict
 
+
 class ObjectBase(image.Image):
     def __init__(self, id, pos):
         self.id = id
@@ -17,16 +18,16 @@ class ObjectBase(image.Image):
 
     def getData(self):
         return object_dict.data[self.id]
-    
+
     def getSpeed(self):
         return self.getData()["SPEED"]
-    
+
     def getPositionCD(self):
         return self.getData()['POSITION_CD']
-    
+
     def getImageIndexCD(self):
         return self.getData()['IMAGE_INDEX_CD']
-    
+
     def getPrice(self):
         return self.getData()['PRICE']
 
@@ -56,4 +57,3 @@ class ObjectBase(image.Image):
         self.pos[0] += speed[0]
         self.pos[1] += speed[1]
         return True
-

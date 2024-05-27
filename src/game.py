@@ -37,10 +37,10 @@ class Game:
     def print_gold(self):
         font = pygame.font.Font(None, 60)
         textImage = font.render("Gold: " + str(self.gold), True, (0, 0, 0))
-        self.ds.blit(textImage, (13, 23)) # black shade
+        self.ds.blit(textImage, (603, 23)) # black shade
 
         textImage = font.render("Gold: " + str(self.gold), True, (255, 255, 255))
-        self.ds.blit(textImage, (10, 20)) # white font
+        self.ds.blit(textImage, (600, 20)) # white font
 
     def draw(self):
         self.bg.draw(self.ds)

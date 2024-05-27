@@ -14,8 +14,7 @@ def bgm():
     mixer.music.play()
 
 def ji():
-    mixer.music.load('music/audios/ji.wav')
-    mixer.music.play()
+    mixer.Sound('music/audios/ji.wav').play()
 
 def ni():
     mixer.music.load('music/audios/ni.wav')
@@ -42,8 +41,7 @@ def music():
     mixer.music.play()
 
 def niganma():
-    mixer.music.load('music/audios/niganma.wav')
-    mixer.music.play()
+    mixer.Sound('music/audios/niganma.wav').play()
 
 def a():
     mixer.music.load('music/audios/a.wav')
