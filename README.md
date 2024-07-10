@@ -17,10 +17,11 @@
 #### Mamba zombies
 
 
-## Requirements
-- python 3.7
-- pygame
-- Run src/main.py to play
+
+To play:
+```bash
+python3 -m ./src/main
+```
 
 ## License
 MIT License
