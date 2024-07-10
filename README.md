@@ -20,7 +20,7 @@
 
 To play:
 ```bash
-python3 -m ./src/main
+python3 src/main.py
 ```
 
 ## License
