@@ -3,6 +3,7 @@ import image
 import sunflower
 import chickenflower
 import peashooter
+import bballshooter
 import zombiebase
 import musicaudio
 from const import *
@@ -93,16 +94,23 @@ class Game:
 
     def add_peashooter(self, x, y):
         pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
-        ps = peashooter.PeaShooter(PEASHOOTER_ID, pos)
+        ps = peashooter.PeaShooter(pos)
         self.plants.append(ps)
+
+    def add_bballshooter(self, x, y):
+        pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
+        bs = bballshooter.BballShooter(pos)
+        self.plants.append(bs)
 
     def add_zombie(self):
         '''Adds zombie at a random row at the screen right (x=14 grids).'''
         x = 14
-        y = random.randint(0, GRID_COUNT[1]-1)
-        pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + y * GRID_SIZE[1]
-        zombie = zombiebase.ZombieBase(ZOMBIE_ID, pos)
-        self.zombies.append(zombie)
+        y = random.randint(0, GRID_COUNT[1])
+        for y in range(GRID_COUNT[1]):
+            # need to adjust y coord of zombie to fit
+            pos = LEFT_TOP[0] + x * GRID_SIZE[0], LEFT_TOP[1] + (y-0.5) * GRID_SIZE[1]
+            zombie = zombiebase.ZombieBase(pos)
+            self.zombies.append(zombie)
         
 
     def get_grid_by_mouse(self, pos):
@@ -129,13 +137,17 @@ class Game:
             self.add_peashooter(x, y)
         elif plant_id == CHICKFLOWER_ID:
             self.add_chickflower(x, y)
+        elif plant_id == BBALLSHOOTER_ID:
+            self.add_bballshooter(x, y)
 
     def mouseClickHandler(self, btn):
         # handles mouse click
         mousePos = pygame.mouse.get_pos()
         self.clicksunlight(mousePos)
         if btn == 3: # mouse left-click, plant sunflower
-            self.checkAddPlant(mousePos, CHICKFLOWER_ID)
+            # self.checkAddPlant(mousePos, CHICKFLOWER_ID)
             # self.checkAddPlant(mousePos, PEASHOOTER_ID)
+            self.checkAddPlant(mousePos, BBALLSHOOTER_ID)
         elif btn == 1: # mouse right-click
-            self.checkAddPlant(mousePos, SUNFLOWER_ID)
+            # self.checkAddPlant(mousePos, SUNFLOWER_ID)
+            self.checkAddPlant(mousePos, PEASHOOTER_ID)

@@ -1,5 +1,5 @@
 data = {
-    0: { # bullet
+    "peabullet": {
         'PATH': 'pic/other/peabullet.png',
         'IMAGE_INDEX_MAX': 0,
         'IMAGE_INDEX_CD': 0.0,
@@ -15,13 +15,13 @@ data = {
         'IMAGE_INDEX_MAX': 0,
         'IMAGE_INDEX_CD': 0.0,
         'POSITION_CD': 0.008,
-        'SIZE': (30, 30),
+        'SIZE': (50, 50),
         'SPEED': (4, 0),
         'PRICE': 0
 
     },
 
-    1: { # zombie
+    "zombie": {
         'PATH': 'pic/zombies/Zombie_%d copy.png',
         'IMAGE_INDEX_MAX': 21,
         'IMAGE_INDEX_CD': 0.05,  # zombie frame rate
@@ -41,7 +41,7 @@ data = {
         'PRICE': 0
     },
 
-    2: { # sunlight
+    "sunlight": {
         'PATH': 'pic/other/sunlight/%d.png',
         'IMAGE_INDEX_MAX': 30,
         'IMAGE_INDEX_CD': 0.03,
@@ -51,7 +51,7 @@ data = {
         'PRICE': 5 # picks sunlight earns 5 gold
     },
 
-    3: { # sunflower
+    "sunflower": { # sunflower
         'PATH': 'pic/plants/SunFlower/SunFlower_%d.png',
         'IMAGE_INDEX_MAX': 17,
         'IMAGE_INDEX_CD': 0.03,
@@ -60,7 +60,7 @@ data = {
         'SPEED': (0, 0),
         'PRICE': 30 # costs 30 gold
     },
-    4: { # peashooter
+    "peashooter": {
         'PATH': 'pic/plants/Peashooter/Peashooter_%d.png',
         'IMAGE_INDEX_MAX': 12,
         'IMAGE_INDEX_CD': 0.03,
@@ -69,7 +69,16 @@ data = {
         'SPEED': (0, 0),
         'PRICE': 20  # costs 20 gold
     },
-    5: { # Chickenflower
+    "bballshooter": {
+        'PATH': 'pic/plants/Peashooter/Peashooter_%d.png',
+        'IMAGE_INDEX_MAX': 12,
+        'IMAGE_INDEX_CD': 0.03,
+        'POSITION_CD': 0.05,
+        'SIZE': (80, 80),
+        'SPEED': (0, 0),
+        'PRICE': 1000  # costs 20 gold
+    },
+    "chickflower": { # Chickenflower
         'PATH': 'pic/chickens/chicken_%d.png',
         'IMAGE_INDEX_MAX': 3,
         'IMAGE_INDEX_CD': 0.5,

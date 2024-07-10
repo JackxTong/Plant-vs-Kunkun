@@ -12,6 +12,7 @@ class Menubar():
         '''Card_list is list of card names in string.'''
         self.ds = ds
         self.pos = (0, 0)
+        self.size = (522, 87)
         self.image = self.load_menubar()
         self.rect = self.image.getRect()
         self.first_card_x_coord = 70 # first card x coordinate
@@ -19,7 +20,7 @@ class Menubar():
         self.setup_cards(card_list)
         
     def load_menubar(self):
-        return image.Image('pic/menu_bar.png', 0, self.pos, (522, 87), 0)
+        return image.Image('pic/menu_bar.png', 0, self.pos, self.size, 0)
     
     def update(self):
         pass
@@ -40,6 +41,20 @@ class Menubar():
             pos = (x, y)
             x += 60
             self.card_list.append(Card(c.name, pos))
+
+    # make menubar clickable
+    def mouseClickHandler(self, button):
+        if button == 1:
+            x, y = pygame.mouse.get_pos()
+            if self.rect.collidepoint(x, y):
+                for card in self.card_list:
+                    if card.image.getRect().collidepoint(x, y):
+                        print(f"clicked on {card.name} card")
+                        # can drag the card to the game board
+                        card.image.move(x, y)
+                        card.image.draw(self.ds)
+                        if card.name == "sunflower":
+                            print("sunflower")
 
 
 
