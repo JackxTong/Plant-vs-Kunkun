@@ -6,8 +6,8 @@ from const import *
 from game import *
 import image
 import items
-
 import menubar
+from menubar import *
 
 pygame.init()
 pygame.mixer.init()
@@ -23,28 +23,47 @@ menu_bar = menubar.Menubar(DS, menu_card_list)
 
 background = image.Image('pic/Background/Background_0.jpg', 0, (0, 0), (1280, 600), 0)
 kun = items.KunKun((1280, 200))
-pbb = image.Image('pic/pbb.png', 0, (220, 60), (120, 120), 0)
 
+mousedown = False
+dragging_card = False
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
+        if event.type == pygame.MOUSEBUTTONUP:
+            mousedown = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            game.mouseClickHandler(event.button)
+            mousedown = True
+        if mousedown:
+            x, y = game.mouseClickHandler(event.button)
+            card_name = menu_bar.mouseClickHandler(event.button)
+            if card_name:
+                print(f"clicked on {card_name} card")
+                # can drag the card to the game board
+                C = Card(card_name, (x, y))
+                C.draw(DS)
+                dragging_card = True
+                mousedown = False
+        
+        if dragging_card:
+            # draw card where cursor is moving
+            x, y = pygame.mouse.get_pos()
+            image.Image(f"pic/Cards/card_{card_name}.png", 0, (x, y), C.size, 0).draw(DS)
+  
+            if event.type == pygame.MOUSEBUTTONUP:
+                dragging_card = False
+            pygame.display.update()
 
+
+    
     game.update()
     DS.fill((255, 255, 255))
     game.draw()
-
-    ###
     menu_bar.draw()
-    ###
-
     kun.draw(DS)
     kun.update()
-    # pbb.draw(DS)
 
     pygame.display.update()
 

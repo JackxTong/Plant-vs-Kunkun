@@ -11,7 +11,6 @@ import pygame
 import time
 import random
 from object_dict import data
-
 path_bg = 'pic/Background/Background_0.jpg'
 
 class Game:
@@ -145,9 +144,11 @@ class Game:
         mousePos = pygame.mouse.get_pos()
         self.clicksunlight(mousePos)
         if btn == 3: # mouse left-click, plant sunflower
-            # self.checkAddPlant(mousePos, CHICKFLOWER_ID)
-            # self.checkAddPlant(mousePos, PEASHOOTER_ID)
             self.checkAddPlant(mousePos, BBALLSHOOTER_ID)
         elif btn == 1: # mouse right-click
             # self.checkAddPlant(mousePos, SUNFLOWER_ID)
             self.checkAddPlant(mousePos, PEASHOOTER_ID)
+        return mousePos
+
+
+

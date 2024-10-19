@@ -46,15 +46,15 @@ class Menubar():
     def mouseClickHandler(self, button):
         if button == 1:
             x, y = pygame.mouse.get_pos()
-            if self.rect.collidepoint(x, y):
+            if self.rect.collidepoint(x, y): # click within menubar
                 for card in self.card_list:
                     if card.image.getRect().collidepoint(x, y):
-                        print(f"clicked on {card.name} card")
-                        # can drag the card to the game board
-                        card.image.move(x, y)
-                        card.image.draw(self.ds)
-                        if card.name == "sunflower":
-                            print("sunflower")
+                        # print(f"clicked on {card.name} card")
+                        return card.name
+                return False
+
+
+
 
 
 

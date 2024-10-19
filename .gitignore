@@ -4,3 +4,4 @@ venv/
 pvzenv/
 
 __pycache__/
+.DS_Store
